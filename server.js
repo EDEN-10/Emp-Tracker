@@ -1,22 +1,19 @@
-import dotenv from "dotenv"; 
-import inquirer from "inquirer";
-import express from "express";
-import mysql from "mysql2"
+// import dotenv from "dotenv"; 
+// import inquirer from "inquirer";
 // import db from "./Database/connection.js";
-// Choices = require("inquirer/lib/objects/choices");
+// import "console.table"
+// import express from "express";
+// import mysql from "mysql2";
+// import db from "./Database/connection.js";
+const db = require('./Database/connection')
+const inquirer = require ('inquirer')
 
-
-// const db = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: '12345',
-//   database: 'employees'
-// });
-
+// import choices from "inquirer";
 async function initialQuestions() {
-    return await inquirer
+   const answers = await inquirer
     .prompt({
       type: "list",
+
       name: "department",
       message: "what would you like to do?",
       choices: [
@@ -27,16 +24,24 @@ async function initialQuestions() {
         "add a role",
         "add an employee",
         "update an employee role",
-      ]}).then((answers)=> {
-        console.log(answers);
-        var department = ""
-        if(answers.department == "Architecture", "Engineering", "Finace", "HR"){
-          department = "[]"
-        }
-      }
-    ).catch((error) => {
-      console.log("error") 
-    });
+      ]})
+
+    console.log(answers)
+//       .then((answers)=> {
+//         console.log(answers);
+//         if (answers.department === "view all departments"){
+//           db.query("SELECT * FROM departments",(data)=>{
+//             console.table(data)
+//           })
+//         }
+//         // var department = ""
+//         // if(answers.department == "Architecture", "Engineering", "Finace", "HR"){
+//         //   department = "[]"
+       
+//       }
+//     ).catch((error) => {
+//       console.log("error") 
+//     });
 }
 
 initialQuestions()
