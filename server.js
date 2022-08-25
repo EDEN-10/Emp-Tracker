@@ -150,7 +150,7 @@ function addadepartment(deptChoices){
 
       connection.query(query, res.department,(err, res)=>{
       if(err)throw err;
-        firstPrompt();
+      initialQuestions();
         console.table(res);
       });
   })
@@ -182,7 +182,7 @@ function addarole (role) {
         role_id: res.roleId
       },(err, res)=>{
         if(err) throw err;
-        firstPrompt();
+        initialQuestions();
     });
   });
 }
